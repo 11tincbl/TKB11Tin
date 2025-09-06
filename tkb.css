@@ -1,15 +1,25 @@
+.logo {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000px;
+}
+
 body {
   font-family: "Arial", sans-serif;
   background-color: #f9f9f9;
   padding: 20px;
-  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #0f172a, #00f2ff);
 }
 h1 {
   color: #333;
   margin-bottom: 20px;
+  text-align: center;
 }
 h2 {
   margin-right: 350px;
+  text-align: center;
 }
 #date-info {
   font-size: 12px;
@@ -55,4 +65,8 @@ tbody tr:hover {
 
 #tkbchieu {
   margin: 0 auto;
+}
+
+button:hover {
+  box-shadow: 0 0 15px #00f2ff;
 }

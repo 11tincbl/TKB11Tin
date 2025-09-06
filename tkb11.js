@@ -10,7 +10,7 @@ const schedule = {
 const scheduleafternoon = {
   0: ["", "", "", ""],
   1: ["", "", "GDTC(Định)", "GDTC(Định)"],
-  2: ["HĐTN(Nữ)", "HĐTN(Nữ) ", "HĐTN(Nữ)git push -u origin", ""],
+  2: ["HĐTN(Nữ)", "HĐTN(Nữ) ", "HĐTN(Nữ)", ""],
   3: ["", "", "", ""],
   4: ["", "", "", ""],
 };

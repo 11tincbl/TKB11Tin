@@ -13,6 +13,7 @@ const scheduleafternoon = {
   2: ["HĐTN(Nữ)", "HĐTN(Nữ) ", "HĐTN(Nữ)", ""],
   3: ["", "", "", ""],
   4: ["", "", "", ""],
+  5: ["", "", "", "", ""],
 };
 
 function render_schedule() {
@@ -57,7 +58,7 @@ function render_schedule() {
     const tietcell2 = document.createElement("td");
     tietcell2.textContent = i;
     row.appendChild(tietcell2);
-    for (let j = 0; j < 5; j++) {
+    for (let j = 0; j <= 5; j++) {
       const aftercell = document.createElement("td");
       aftercell.textContent = scheduleafternoon[j]?.[i - 1] || "";
       row.appendChild(aftercell);

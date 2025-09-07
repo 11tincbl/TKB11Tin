@@ -2,9 +2,9 @@ const cacheName = "my-site-cache-v1";
 const filesToCache = [
   "/",
   "/index.html",
-  "/style.css",
-  "/script.js",
-  "/images/logo.png",
+  "/tkb.css",
+  "/tkb11.js",
+  "/img/TingTingpro.png",
 ];
 
 self.addEventListener("install", (event) => {

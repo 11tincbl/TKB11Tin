@@ -1,5 +1,11 @@
 const schedule = {
-  0: ["Chào cờ", "Tin học(Lượm)", "Hóa học(Nữ)", "Tiếng Anh(Tú)", "Tiếng Anh(Tú)"],
+  0: [
+    "Chào cờ",
+    "Tin học(Lượm)",
+    "Hóa học(Nữ)",
+    "Tiếng Anh(Tú)",
+    "Tiếng Anh(Tú)",
+  ],
   1: ["Tin học(Quyên)", "Ngữ Văn(Bích)", "Toán(Tuệ)", "Tin học(Quyên)", ""],
   2: ["KTCN(Huy)", "Tin học(Quyên)", "Tin học(Lượm)", "Toán(Tuệ)", "Toán(Tuệ)"],
   3: ["Tiếng Anh(Tú)", "Vật lý(Miễn)", "GDQP(Đạt)", "", ""],
@@ -66,4 +72,18 @@ function render_schedule() {
     tbody2.appendChild(row);
   }
 }
+
+function balancetable() {
+  const morning = document.querySelector("#tkb tbody tr").length;
+  const afternoon = document.querySelector("#tkbchieu tbody tr").length;
+  const tbody2 = document.querySelector("#tkbchieu tbody");
+  if (afternoon < morning) {
+    for (let i = afternoon + 1; i <= morning; i++) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${i}</td>` + "<td></td>".repeat(6);
+      tbody2.appendChild(row);
+    }
+  }
+}
 render_schedule();
+balancetable();

@@ -1,10 +1,10 @@
 const schedule = {
-  0: ["Chào cờ", "Tin học(Lượm)", "Hóa học(Nữ)", "Văn(Bích)", "Văn(Bich)"],
-  1: ["", "", "", "", ""],
-  2: ["", "", "", "", ""],
-  3: ["", "", "", "", ""],
-  4: ["", "", "", "", ""],
-  5: [" ", "", "", "", ""],
+  0: ["Chào cờ", "Tin học(Lượm)", "Hóa học(Nữ)", "Tiếng Anh(Tú)", "Tiếng Anh(Tú)"],
+  1: ["Tin học(Quyên)", "Ngữ Văn(Bích)", "Toán(Tuệ)", "Tin học(Quyên)", ""],
+  2: ["KTCN(Huy)", "Tin học(Quyên)", "Tin học(Lượm)", "Toán(Tuệ)", "Toán(Tuệ)"],
+  3: ["Tiếng Anh(Tú)", "Vật lý(Miễn)", "GDQP(Đạt)", "", ""],
+  4: ["Lịch sử(Huỳnh)", "KTCN(Huy)", "Toán(Tuệ)", "", ""],
+  5: ["Ngữ Văn(Bích) ", "Ngữ Văn(Bích)", "Hóa học(Nữ)", "SHL", ""],
 };
 
 const scheduleafternoon = {

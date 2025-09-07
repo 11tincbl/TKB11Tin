@@ -50,7 +50,8 @@ thead {
   color: white;
 }
 table tr,
-th {
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
 }
@@ -60,11 +61,6 @@ th {
   overflow-wrap: break-word;
   white-space: normal;
   padding: 10px;
-}
-
-table td {
-  border: 1px solid black;
-  border-collapse: collapse;
 }
 
 tr,

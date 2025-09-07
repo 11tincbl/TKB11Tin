@@ -1,10 +1,9 @@
 const cacheName = "tkb-cache-v1";
 const filesToCache = [
-  "/",
   "/index.html",
-  "/tkb.css",
-  "/tkb11.js",
-  "/img/TingTingpro.png",
+  "tkb.css",
+  "tkb11.js",
+  "img/TingTingpro.png",
 ];
 
 // Cài đặt và cache các file

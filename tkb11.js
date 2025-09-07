@@ -87,3 +87,12 @@ function balancetable() {
 }
 render_schedule();
 balancetable();
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then((reg) => console.log("SW đăng ký thành công:", reg.scope))
+      .catch((err) => console.log("SW đăng ký thất bại:", err));
+  });
+}

@@ -1,15 +1,5 @@
-// 🔹 Đặt ngay đầu file
-// Đảm bảo SW được update ngay khi có phiên bản mới
-self.addEventListener("install", (event) => {
-  self.skipWaiting(); // Bỏ qua trạng thái "waiting", update ngay lập tức
-});
-
-self.addEventListener("activate", (event) => {
-  event.waitUntil(self.clients.claim()); // Cho SW mới điều khiển toàn bộ trang
-});
-
 // ===================== //
-// PHẦN CODE CACHE CỦA BẠN //
+// PHẦN ĐẦU TIÊN: Khai báo //
 // ===================== //
 
 const cacheName = "tkb-cache-v1";
@@ -23,20 +13,31 @@ const filesToCache = [
   `${basePath}/img/TingTingpro.png`,
 ];
 
-// Khi cài đặt SW -> cache toàn bộ file
+// ===================== //
+// INSTALL EVENT //
+// ===================== //
 self.addEventListener("install", (event) => {
   console.log("[SW] Installing and caching files...");
+
+  // Cache toàn bộ file
   event.waitUntil(
     caches.open(cacheName).then((cache) => {
       console.log("[SW] Caching:", filesToCache);
       return cache.addAll(filesToCache);
     })
   );
+
+  // Bỏ qua trạng thái "waiting", update ngay lập tức
+  self.skipWaiting();
 });
 
-// Khi SW được activate -> xóa cache cũ
+// ===================== //
+// ACTIVATE EVENT //
+// ===================== //
 self.addEventListener("activate", (event) => {
   console.log("[SW] Activating and cleaning old cache...");
+
+  // Xóa cache cũ
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
@@ -49,15 +50,21 @@ self.addEventListener("activate", (event) => {
       )
     )
   );
+
+  // SW mới điều khiển toàn bộ trang ngay lập tức
+  return self.clients.claim();
 });
 
-// Khi fetch -> trả về từ cache hoặc mạng
+// ===================== //
+// FETCH EVENT //
+// ===================== //
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       return (
         response ||
         fetch(event.request).catch(() => {
+          // Nếu offline và request là file HTML thì trả về index.html
           if (event.request.destination === "document") {
             return caches.match(`${basePath}/index.html`);
           }

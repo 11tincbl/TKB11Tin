@@ -9,7 +9,7 @@ const schedule = {
   1: ["Tin học(Quyên)", "Ngữ Văn(Bích)", "Toán(Tuệ)", "Tin học(Quyên)", ""],
   2: ["KTCN(Huy)", "Tin học(Quyên)", "Tin học(Lượm)", "Toán(Tuệ)", "Toán(Tuệ)"],
   3: ["Tiếng Anh(Tú)", "Vật lý(Miễn)", "GDQP(Đạt)", "", ""],
-  4: ["Lịch sử(Huỳnh)", "KTCN(Huy)", "Toán(Tuệ)", "", ""],
+  4: ["Lịch sử(Huỳnh)", "KTCN(Huy)", "Toán(Tuệ)", "Vật Lý(Phi)", "Vật Lý(Phi)"],
   5: ["Ngữ Văn(Bích) ", "Ngữ Văn(Bích)", "Hóa học(Nữ)", "SHL", ""],
 };
 

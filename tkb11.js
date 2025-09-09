@@ -91,8 +91,8 @@ balancetable();
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("service-worker.js")
+      .register("/TKB11Tin/service-worker.js") // phải có /TKB11Tin/
       .then((reg) => console.log("SW đăng ký thành công:", reg.scope))
-      .catch((err) => console.log("SW đăng ký thất bại:", err));
+      .catch((err) => console.error("SW đăng ký thất bại:", err));
   });
 }

@@ -2,11 +2,18 @@ const cacheName = "tkb-cache-v1";
 const basePath = "/TKB11Tin";
 
 const filesToCache = [
+<<<<<<< HEAD
   `${basePath}/`,
   `${basePath}/index.html`,
   `${basePath}/tkb.css`,
   `${basePath}/tkb11.js`,
   `${basePath}/img/TingTingpro.png`,
+=======
+  "index.html",
+  "tkb.css",
+  "tkb11.js",
+  "img/TingTingpro.png",
+>>>>>>> c440da661cabfcf27fc2662bd449c1fc41276169
 ];
 
 self.addEventListener("install", (event) => {

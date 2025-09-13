@@ -1,6 +1,5 @@
 const cacheName = "tkb-cache-v2";
 const basePath = "/TKB11Tin";
-
 const filesToCache = [
   `${basePath}/`,
   `${basePath}/index.html`,
@@ -12,12 +11,17 @@ const filesToCache = [
 self.addEventListener("install", (event) => {
   console.log("[SW] Installing and caching files...");
   event.waitUntil(
-    caches.open(cacheName).then((cache) => {
-      console.log("[SW] Caching:", filesToCache);
-      return cache.addAll(filesToCache);
-    })
+    caches.open(cacheName).then((cache) => cache.addAll(filesToCache))
   );
-  self.skipWaiting();
+  // NOTE: we keep skipWaiting optional — we'll prefer skip via message for safer flow
+  // self.skipWaiting();
+});
+
+// allow page to tell SW to activate immediately
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("activate", (event) => {
@@ -28,23 +32,38 @@ self.addEventListener("activate", (event) => {
       .then((keys) => {
         return Promise.all(
           keys.map((key) => {
-            if (key !== cacheName) {
-              console.log("[SW] Removing old cache:", key);
-              return caches.delete(key);
-            }
+            if (key !== cacheName) return caches.delete(key);
           })
         );
       })
-      .then(() => self.clients.claim())
+      .then(() => {
+        // claim clients after cleaning
+        return self.clients.claim();
+      })
+      .then(() => {
+        // notify all window clients that SW updated and they should reload
+        return self.clients
+          .matchAll({ type: "window", includeUncontrolled: true })
+          .then((clients) => {
+            clients.forEach((client) => {
+              client.postMessage({ type: "SW_UPDATED" });
+            });
+          });
+      })
   );
 });
 
+// network-first with cache update (as suggested earlier)
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.open(cacheName).then((cache) => {
       return fetch(event.request)
         .then((networkResponse) => {
-          if (networkResponse.status === 200) {
+          if (
+            networkResponse &&
+            networkResponse.status === 200 &&
+            event.request.method === "GET"
+          ) {
             cache.put(event.request, networkResponse.clone());
           }
           return networkResponse;

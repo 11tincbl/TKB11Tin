@@ -89,10 +89,45 @@ render_schedule();
 balancetable();
 
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/TKB11Tin/service-worker.js") // phải có /TKB11Tin/
-      .then((reg) => console.log("SW đăng ký thành công:", reg.scope))
-      .catch((err) => console.error("SW đăng ký thất bại:", err));
+  navigator.serviceWorker
+    .register("/TKB11Tin/service-worker.js")
+    .then((reg) => {
+      console.log("SW registered", reg);
+
+      // If there's a waiting SW (already installed but waiting), ask it to skip waiting
+      if (reg.waiting) {
+        reg.waiting.postMessage({ type: "SKIP_WAITING" });
+      }
+
+      // When an update is found (new SW installing)
+      reg.addEventListener("updatefound", () => {
+        const newSW = reg.installing;
+        newSW.addEventListener("statechange", () => {
+          if (newSW.state === "installed") {
+            // If there's already a controller, that means update available
+            if (navigator.serviceWorker.controller) {
+              // tell the new SW to skipWaiting immediately
+              newSW.postMessage({ type: "SKIP_WAITING" });
+            }
+          }
+        });
+      });
+    });
+
+  // When controller changes, page is now controlled by the new SW -> reload once
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
+
+  // Listen to messages from SW (e.g., SW_UPDATED)
+  navigator.serviceWorker.addEventListener("message", (event) => {
+    if (event.data && event.data.type === "SW_UPDATED") {
+      // Optional: show UI "New version available" and let user decide
+      // Or force reload:
+      window.location.reload();
+    }
   });
 }

@@ -14,7 +14,7 @@ const schedule = {
 };
 
 const scheduleafternoon = {
-  0: ["", "", "", ""],
+  0: ["GDĐP(Hằng)", "GDĐP(Hằng)", "GDĐP(Hằng)", ""],
   1: ["", "", "GDTC(Định)", "GDTC(Định)"],
   2: ["HĐTN(Nữ)", "HĐTN(Nữ) ", "HĐTN(Nữ)", ""],
   3: ["", "", "", ""],

@@ -1,21 +1,21 @@
 const schedule = {
   0: [
     "Chào cờ",
-    "Tiếng Anh(Tú)",
-    "Tiếng Anh(Tú)",
-    "Tin học(Lượm)",
-    "Hóa học(Nữ)",
+    "Công nghệ",
+    "Hóa học",
+    "Ngữ Văn",
+    "Ngữ Văn",
   ],
-  1: ["Tin học(Quyên)", "Ngữ Văn(Bích)", "Toán(Tuệ)", "Tin học(Quyên)", ""],
-  2: ["KTCN(Huy)", "Tin học(Quyên)", "Tin học(Lượm)", "Toán(Tuệ)", "Toán(Tuệ)"],
-  3: ["Tiếng Anh(Tú)", "Vật lý(Miễn)", "GDQP(Đạt)", "", ""],
-  4: ["Lịch sử(Huỳnh)", "KTCN(Huy)", "Toán(Tuệ)", "Hóa học(Nữ)", ""],
-  5: ["Ngữ Văn(Bích) ", "Ngữ Văn(Bích)", "Vật lý(Phi)", "Vật lý(Phi)", "SHL"],
+  1: ["Vật lí", "Lịch sử", "Toán", "Toán", ""],
+  2: ["Toán", "Lịch sử", "Tin học(Lượm)", "Tin(Quyên)", "Tin(Quyên)"],
+  3: ["Toán", "Công nghệ", "GDQP", "Vật lí", "Tin(Lượm)"],
+  4: ["Vật lí", "Hóa học", "Tin(Quyên)", "Tiếng Anh", "Tiếng Anh"],
+  5: ["Tiếng Anh ", "Ngữ Văn", "SHL", "", ""],
 };
 
 const scheduleafternoon = {
-  0: ["GDĐP(Hằng)", "GDĐP(Hằng)", "GDĐP(Hằng)", ""],
-  1: ["", "", "GDTC(Định)", "GDTC(Định)"],
+  0: ["", "GDQP", "GDQP", ""],
+  1: ["GDTC", "GDTC", "", ""],
   2: ["HĐTN(Nữ)", "HĐTN(Nữ) ", "HĐTN(Nữ)", ""],
   3: ["", "", "", ""],
   4: ["", "", "", ""],
